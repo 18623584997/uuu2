@@ -21,8 +21,7 @@ public class MyClientHandler extends ChannelHandlerAdapter {
         String str = "客户端连接成功$";
         System.out.println("socket id:"+con.getID());
         con.send(str);
-
-
+        new HeartTimer(ctx.channel()).start();
     }
 
     @Override

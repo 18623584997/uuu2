@@ -36,7 +36,7 @@ public class Client {
                 @Override
                 protected void initChannel(SocketChannel socketChannel) throws Exception {
                     ChannelPipeline pipeline = socketChannel.pipeline();
-                    pipeline.addLast(new IdleStateHandler(0,50,0, TimeUnit.SECONDS));
+                    pipeline.addLast(new IdleStateHandler(0,80,0, TimeUnit.SECONDS));
                     ByteBuf delimiter = Unpooled.copiedBuffer("$".getBytes());
                     // pipeline.addLast(new IdleStateHandler(25,25,30, TimeUnit.SECONDS));
                     pipeline.addLast(new DelimiterBasedFrameDecoder(1024,delimiter));
