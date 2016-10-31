@@ -2,6 +2,7 @@ package handler;
 
 import api.ConnectionManager;
 import api.Connnection;
+import client.Client;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerAdapter;
@@ -20,6 +21,8 @@ public class MyClientHandler extends ChannelHandlerAdapter {
         String str = "客户端连接成功$";
         System.out.println("socket id:"+con.getID());
         con.send(str);
+
+
     }
 
     @Override
@@ -37,7 +40,7 @@ public class MyClientHandler extends ChannelHandlerAdapter {
     public void userEventTriggered(ChannelHandlerContext ctx, Object evt) throws Exception {
         super.userEventTriggered(ctx, evt);
 
-        System.out.println("超时请求$");
+        new Client().connect();
     }
 
     @Override
